@@ -2,7 +2,7 @@
 An opportunity to explore how to make an EV3 Robot move.
 
 Authors: Dave Fisher, David Mutchler, Vibha Alangar,
-their colleagues, and PUT_YOUR_NAME_HERE.
+their colleagues, and Haozhe Wu.
 """  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 # -----------------------------------------------------------------------------
@@ -21,10 +21,11 @@ def main():
     print("Running main on the robot.")
 
     # TODO: 2. Construct a RoseBot.  Send it as an argument to other functions.
-    run_test_spin()
-    run_test_go()
-    challenge1()
-    challenge2()
+    robot=rb.RoseBot()
+    run_test_spin(robot)
+    run_test_go(robot)
+    challenge1(robot)
+    challenge2(robot)
 
 
 def run_test_spin(robot):
@@ -38,7 +39,7 @@ def run_test_spin(robot):
     # TODO: 3. Implement this.
     # -------------------------------------------------------------------------
 
-
+    spin(robot,2,50)
 def spin(robot, seconds, speed):
     """ :type robot: rb.RoseBot """
     # -------------------------------------------------------------------------
@@ -52,8 +53,17 @@ def spin(robot, seconds, speed):
     #
     # Use the DOT trick to figure out how to turn on and turn off motors.
     # -------------------------------------------------------------------------
-
-
+    robot.drive_system.left_motor.turn_on(speed)
+    robot.drive_system.right_motor.turn_on(speed)
+    robot.drive_system.left_motor.turn_on(speed)
+    robot.drive_system.right_motor.turn_on(-speed)
+    robot.drive_system.left_motor.turn_on(-speed)
+    robot.drive_system.right_motor.turn_on(speed)
+    robot.drive_system.left_motor.turn_on(speed)
+    robot.drive_system.right_motor.turn_on(speed)
+    time.sleep(seconds)
+    robot.drive_system.left_motor.turn_off()
+    robot.drive_system.right_motor.turn_off()
 def run_test_go(robot):
     """
     Tests the   go   function, by making the robot go several times,
@@ -75,8 +85,11 @@ def go(robot, seconds, left_wheel_speed, right_wheel_speed):
     #   using the given speeds for the left and right wheels, respectively.
     # -------------------------------------------------------------------------
 
+# python m1_motion.py
 
-def challenge1(robot):
+#def test_challenege1(robot):
+
+#def challenge1(robot,seconds,speed):
     """ Your instructor will tell you this challenge. """
 
 
